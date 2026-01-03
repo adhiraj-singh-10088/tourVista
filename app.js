@@ -4,11 +4,15 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
+app.use((req,res,next)=>{
+  req.requestTime = new Date().toISOString();
+})
 
 const getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
     results: tours.length,
+    requestTime: req.requestTime,
     data: {
       tours,
     },
@@ -29,6 +33,7 @@ const createTour = (req, res) => {
       if (err) res.send(err.body.message);
       res.status(201).json({
         status: 'success',
+        requestTime: req.requestTime,
         data: {
           tour: newTour,
         },
@@ -43,10 +48,12 @@ const getTour = (req, res) => {
   if (tour === undefined)
     return res.status(404).json({
       status: 'Fail',
+      requestTime: req.requestTime,
       message: 'Invalid ID',
     });
   res.status(200).json({
     status: 'success',
+    requestTime: req.requestTime,
     data: {
       tour,
     },
@@ -59,6 +66,7 @@ const updateTour = (req, res) => {
   if (!tour)
     return res.status(404).json({
       status: 'Fail',
+      requestTime: req.requestTime,
       message: "User doesn't exist",
     });
 
@@ -72,10 +80,12 @@ const updateTour = (req, res) => {
       if (err)
         return res.status(404).json({
           status: 'Fail',
+          requestTime: req.requestTime,
           message: err.body.message,
         });
       res.status(201).json({
         status: 'success',
+        requestTime: req.requestTime,
         data: {
           updatedTour: tours[index],
         },
@@ -90,6 +100,7 @@ const deleteTour = (req, res) => {
   if (!tour)
     return res.status(404).json({
       status: 'Fail',
+      requestTime: req.requestTime,
       message: "User doesn't exist",
     });
   const index = tours.indexOf(tour);
@@ -101,10 +112,12 @@ const deleteTour = (req, res) => {
       if (err)
         return res.status(404).json({
           status: 'Fail',
+          requestTime: req.requestTime,
           message: err.body.message,
         });
       res.status(201).json({
         status: 'success',
+        requestTime: req.requestTime,
         message: 'User deleted successfully',
       });
     }
