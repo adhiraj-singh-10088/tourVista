@@ -50,19 +50,21 @@ cd practiceProject
 ```
 
 2. Start the backend server
+```
 npm install
 node server.js
-
+```
 
 Backend runs at:
 
 http://localhost:3000
 
 3. Start the frontend
+```
 cd client
 npm install
 npm run dev
-
+```
 
 Frontend runs at:
 
@@ -77,7 +79,7 @@ GET /api/v1/tours
 🤝 Credits
 
 Backend API and project base provided by
-Adhiraj Singh
+Adhiraj
 
 Frontend UI, React integration, and enhancements by
 Zahed
