@@ -13,6 +13,7 @@ exports.checkID = (req, res, next, val) => {
       requestTime: req.requestTime,
       message: 'Invalid ID',
     });
+  req.tour = tour;
   next();
 };
 
@@ -50,8 +51,7 @@ exports.createTour = (req, res) => {
 };
 
 exports.getTour = (req, res) => {
-  const id = Number(req.params.id);
-  const tour = tours.find((element) => element.id === id);
+  const { tour } = req;
   return res.status(200).json({
     status: 'success',
     requestTime: req.requestTime,
@@ -62,8 +62,7 @@ exports.getTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  const id = Number(req.params.id);
-  const tour = tours.find((element) => element.id === id);
+  const { tour } = req;
 
   const index = tours.indexOf(tour);
   Object.assign(tours[index], req.body.updatedTour);
@@ -90,8 +89,7 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
-  const id = Number(req.params.id);
-  const tour = tours.find((element) => element.id === id);
+  const { tour } = req;
   const index = tours.indexOf(tour);
   tours.splice(index, 1);
   fs.writeFile(

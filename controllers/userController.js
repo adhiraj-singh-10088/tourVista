@@ -5,7 +5,7 @@ const users = JSON.parse(
 );
 
 exports.checkID = (req, res, next, val) => {
-  const id = Number(val);
+  const id = val;
   const user = users.find((element) => element._id === id);
   if (user === undefined)
     return res.status(404).json({
@@ -13,6 +13,7 @@ exports.checkID = (req, res, next, val) => {
       requestTime: req.requestTime,
       message: 'Invalid ID',
     });
+  req.user = user;
   next();
 };
 
@@ -50,8 +51,7 @@ exports.createUser = (req, res) => {
 };
 
 exports.getUser = (req, res) => {
-  const id = req.params.id;
-  const user = users.find((element) => element._id === id);
+  const { user } = req;
   return res.status(200).json({
     status: 'success',
     requestTime: req.requestTime,
@@ -62,8 +62,7 @@ exports.getUser = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-  const id = req.params.id;
-  const user = users.find((element) => element._id === id);
+  const { user } = req;
 
   const index = users.indexOf(user);
   Object.assign(users[index], req.body.updatedUser);
@@ -90,8 +89,7 @@ exports.updateUser = (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-  const id = req.params.id;
-  const user = users.find((element) => element._id === id);
+  const { user } = req;
   const index = users.indexOf(user);
   users.splice(index, 1);
   fs.writeFile(
