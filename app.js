@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 //ROUTES
 
-app.get('/api/v1', express.static(path.join(__dirname, 'public')));
+app.use('/api/v1', express.static(path.join(__dirname, 'public')));
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
