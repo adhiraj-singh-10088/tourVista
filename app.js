@@ -2,6 +2,7 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 const app = express();
 const userRouter = require('./routes/userRoutes');
 const tourRouter = require('./routes/tourRoutes');
@@ -14,6 +15,9 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
+
+// Serve static images from backend public folder at /img
+app.use('/img', express.static(path.join(__dirname, 'public', 'img')));
 
 //ROUTES
 

@@ -4,6 +4,12 @@ import "./TouristCard.css";
 function TouristCard({ tour, onSelect, isFocused, isDimmed }) {
   const images = [tour.imageCover, ...tour.images];
   const [currentImage, setCurrentImage] = useState(0);
+  const buildUrl = (img) => {
+    if (!img) return "";
+    if (img.startsWith("http://") || img.startsWith("https://")) return img;
+    if (img.startsWith("/img") || img.startsWith("img/")) return `/${img.replace(/^\//, "")}`;
+    return `/img/tours/${img}`;
+  };
 
   const nextImage = (e) => {
     e.stopPropagation();
@@ -24,10 +30,7 @@ function TouristCard({ tour, onSelect, isFocused, isDimmed }) {
     >
       {/* IMAGE WRAPPER */}
       <div className="image-wrapper">
-        <img
-          src={`/${images[currentImage]}`}
-          alt={tour.name}
-        />
+        <img src={buildUrl(images[currentImage])} alt={tour.name} />
 
         {isFocused && (
           <>

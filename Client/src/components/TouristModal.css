@@ -38,8 +38,8 @@
 }
 
 .modal-info p {
-  font-size: 0.85rem;
-  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--text-muted);
 }
 
@@ -58,7 +58,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0 3rem;
+  margin: 4rem 0 5rem;
   transition: all 0.5s ease;
 }
 

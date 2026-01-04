@@ -40,6 +40,13 @@ function TouristModal({ tour, onClose }) {
     dragStartX.current = null;
   };
 
+  const buildUrl = (img) => {
+    if (!img) return "";
+    if (img.startsWith("http://") || img.startsWith("https://")) return img;
+    if (img.startsWith("/img") || img.startsWith("img/")) return `/${img.replace(/^\//, "")}`;
+    return `/img/tours/${img}`;
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -83,7 +90,7 @@ function TouristModal({ tour, onClose }) {
             return (
               <img
                 key={index}
-                src={`/${img}`}
+                src={buildUrl(img)}
                 alt={`${tour.name} ${index + 1}`}
                 className="deck-image"
                 style={{
