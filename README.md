@@ -29,7 +29,7 @@ A responsive tour listing web application built with React, consuming a REST API
 ---
 
 ## 📁 Project Structure
-
+```
 practiceProject/
 ├── client/ # React frontend
 ├── controllers/ # Backend controllers
@@ -37,7 +37,7 @@ practiceProject/
 ├── dev-data/ # Sample / seed data
 ├── app.js
 └── server.js
-
+```
 
 ---
 
