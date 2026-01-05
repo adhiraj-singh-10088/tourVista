@@ -1,6 +1,6 @@
 # TourVista 🌍
 
-A responsive tour listing web application built with React, consuming a REST API backend to display real tour data with a clean, modern UI.
+A responsive tour listing web application built with MongoDB, Express.js, React.js and Node.js to display real tour data with a clean, modern UI.
 
 ---
 
@@ -17,14 +17,14 @@ A responsive tour listing web application built with React, consuming a REST API
 ## 🛠 Tech Stack
 
 ### Frontend
-- React (Vite)
+- React.js (Vite)
 - JavaScript
 - CSS
 
 ### Backend
 - Node.js
-- Express
-- REST API
+- Express.js
+- MongoDB
 
 ---
 

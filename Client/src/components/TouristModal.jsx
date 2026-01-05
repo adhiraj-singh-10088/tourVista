@@ -116,7 +116,7 @@ function TouristModal({ tour, onClose }) {
           </button>
         </div>
 
-        <h2>{tour.name}</h2>
+        <h1>{tour.name}</h1>
         <p className="modal-description">{tour.description}</p>
 
         <div className="modal-info">
