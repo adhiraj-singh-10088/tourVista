@@ -18,6 +18,7 @@
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  box-shadow: var(--shadow-lg);
 }
 
 .modal-close {
@@ -33,12 +34,14 @@
 
 .modal-description {
   margin: 0.8rem 0;
-  font-size: 0.9rem;
+  font-size: 1.25rem;
+  font-weight: bold;
   color: var(--text-secondary);
 }
 
 .modal-info p {
   font-size: 1rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--text-muted);
 }
@@ -92,16 +95,27 @@
   cursor: pointer;
   border-radius: 5px;
   z-index: 100;
+  box-shadow: var(--shadow-sm);
 }
 
 .deck-nav.left {
   left: 5px;
 }
 
+.deck-nav.left:active {
+  transform: scale(0.95) translateY(-50%);
+}
+
 .deck-nav.right {
   right: 5px;
 }
 
+.deck-nav.right:active {
+  transform: scale(0.95) translateY(-50%);
+}
+
 .deck-nav:hover {
   background: var(--nav-bg-hover);
+  box-shadow: var(--shadow-sm);
+  transform: scale(1.05) translateY(-50%);
 }
