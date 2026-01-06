@@ -21,6 +21,14 @@ A responsive tour listing web application built with MongoDB, Express.js, React.
 - JavaScript
 - CSS
 
+## Preview
+
+
+
+https://github.com/user-attachments/assets/245e5f48-9fc6-416c-b1b4-1f7dbb53db2e
+
+
+
 ### Backend
 - Node.js
 - Express.js
@@ -52,7 +60,7 @@ cd practiceProject
 2. Start the backend server
 ```
 npm install
-node server.js
+npm start:prod
 ```
 
 Backend runs at:
