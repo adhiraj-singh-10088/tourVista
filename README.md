@@ -60,7 +60,7 @@ cd practiceProject
 2. Start the backend server
 ```
 npm install
-node server.js
+npm start:prod
 ```
 
 Backend runs at:
