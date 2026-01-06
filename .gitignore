@@ -8,10 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 .vscode
-node_modules
 dist
 dist-ssr
-config.env
 *.local
 
 # Editor directories and files
@@ -24,3 +22,7 @@ config.env
 *.njsproj
 *.sln
 *.sw?
+
+#dependencies
+node_modules
+config.env
