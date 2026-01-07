@@ -1,21 +1,6 @@
-const fs = require('fs');
+const Tour = require('./../models/tourModel.js');
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
-);
 
-exports.checkID = (req, res, next, val) => {
-  const id = Number(val);
-  const tour = tours.find((element) => element.id === id);
-  if (tour === undefined)
-    return res.status(404).json({
-      status: 'Fail',
-      requestTime: req.requestTime,
-      message: 'Invalid ID',
-    });
-  req.tour = tour;
-  next();
-};
 
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price)
@@ -28,11 +13,11 @@ exports.checkBody = (req, res, next) => {
 exports.getAllTours = (req, res) => {
   return res.status(200).json({
     status: 'success',
-    results: tours.length,
-    requestTime: req.requestTime,
-    data: {
-      tours,
-    },
+    // results: tours.length,
+    // requestTime: req.requestTime,
+    // data: {
+    //   tours,
+    // },
   });
 };
 
@@ -42,20 +27,13 @@ exports.createTour = (req, res) => {
 
   tours.push(newTour);
 
-  fs.writeFile(
-    `${__dirname}/dev-data/data/tours-simple.json`,
-    JSON.stringify(tours),
-    (err) => {
-      if (err) return res.status(500).send(err.body.message);
-      return res.status(201).json({
+  return res.status(201).json({
         status: 'success',
         requestTime: req.requestTime,
-        data: {
-          tour: newTour,
-        },
+        // data: {
+        //   tour: newTour,
+        // },
       });
-    }
-  );
 };
 
 exports.getTour = (req, res) => {
@@ -75,46 +53,20 @@ exports.updateTour = (req, res) => {
   const index = tours.indexOf(tour);
   Object.assign(tours[index], req.body.updatedTour);
 
-  fs.writeFile(
-    `${__dirname}/dev-data/data/tours-simple.json`,
-    JSON.stringify(tours),
-    (err) => {
-      if (err)
-        return res.status(500).json({
-          status: 'Fail',
-          requestTime: req.requestTime,
-          message: err.body.message,
-        });
-      return res.status(200).json({
-        status: 'success',
-        requestTime: req.requestTime,
-        data: {
-          updatedTour: tours[index],
-        },
-      });
-    }
-  );
+  return res.status(200).json({
+    status: 'success',
+    requestTime: req.requestTime,
+    data: {
+      updatedTour: tours[index],
+    },
+  });
 };
 
 exports.deleteTour = (req, res) => {
   const { tour } = req;
-  const index = tours.indexOf(tour);
-  tours.splice(index, 1);
-  fs.writeFile(
-    `${__dirname}/dev-data/data/tours-simple.json`,
-    JSON.stringify(tours),
-    (err) => {
-      if (err)
-        return res.status(500).json({
-          status: 'Fail',
-          requestTime: req.requestTime,
-          message: err.body.message,
-        });
-      return res.status(200).json({
-        status: 'success',
-        requestTime: req.requestTime,
-        message: 'Tour deleted successfully',
-      });
-    }
-  );
+  return res.status(200).json({
+    status: 'success',
+    requestTime: req.requestTime,
+    message: 'Tour deleted successfully',
+  });
 };
