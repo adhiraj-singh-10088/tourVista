@@ -13,6 +13,7 @@ function TouristModal({ tour, onClose }) {
   const isDraggingRef = useRef(false);
 
   const handleNext = () => {
+    if (animating) return;
     setDirection("next");
     setAnimating(true);
     setTimeout(() => {
@@ -22,6 +23,7 @@ function TouristModal({ tour, onClose }) {
   };
 
   const handlePrev = () => {
+    if (animating) return;
     setDirection("prev");
     setAnimating(true);
     setTimeout(() => {
