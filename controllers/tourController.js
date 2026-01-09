@@ -1,5 +1,11 @@
 const Tour = require('./../models/tourModel.js');
 
+exports.aliasTopTours = (req, res, next) => {
+  req.query.limit = '5';
+  req.query.sort = '-ratingsAverage,price';
+  next();
+};
+
 exports.getAllTours = async (req, res) => {
   try {
     //Filtering
@@ -33,7 +39,9 @@ exports.getAllTours = async (req, res) => {
     //Pagination
     let entriesToLoad;
     const perRow = Number(req.query.perRow);
-    if (perRow > 0 && Number.isInteger(perRow)) {
+    if (req.query.limit) {
+      entriesToLoad = req.query.limit;
+    } else if (perRow > 0 && Number.isInteger(perRow)) {
       entriesToLoad = perRow * 5;
     } else {
       entriesToLoad = 15;
@@ -41,7 +49,9 @@ exports.getAllTours = async (req, res) => {
     const page = Number(req.query.page) || 1;
     const skip = (page - 1) * entriesToLoad;
     const totalTours = await Tour.countDocuments();
-    if (skip >= totalTours) {throw new Error('This page does not exist');}
+    if (skip >= totalTours) {
+      throw new Error('This page does not exist');
+    }
     query = query.skip(skip).limit(entriesToLoad);
 
     const tours = await query;
