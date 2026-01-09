@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import CardGrid from "../components/CardGrid";
 import useTours from "../hooks/useTours";
 
@@ -8,7 +7,6 @@ function HomePage() {
 
   return (
     <>
-      <Header />
 
       {status === "loading" ? (
         <p className="loading">Loading tours…</p>
