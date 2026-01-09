@@ -4,7 +4,7 @@ exports.getAllTours = async (req, res) => {
   try {
     //Filtering
     const queryObject = { ...req.query };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    const excludedFields = ['page', 'sort', 'limit', 'fields', 'perRow'];
     excludedFields.forEach((el) => delete queryObject[el]);
 
     //Advanced filtering
@@ -29,6 +29,19 @@ exports.getAllTours = async (req, res) => {
     } else {
       query = query.select('-__v');
     }
+
+    //Pagination
+    let entriesToLoad;
+    const perRow = Number(req.query.perRow);
+    if (perRow > 0 && Number.isInteger(perRow)) {
+      entriesToLoad = perRow * 5;
+    } else {
+      entriesToLoad = 15;
+    }
+    query = query
+      .skip((req.query.page - 1) * entriesToLoad)
+      .limit(entriesToLoad);
+
     const tours = await query;
 
     return res.status(200).json({
@@ -41,7 +54,7 @@ exports.getAllTours = async (req, res) => {
   } catch (err) {
     return res.status(404).json({
       status: 'fail',
-      message: err,
+      message: err.message,
     });
   }
 };

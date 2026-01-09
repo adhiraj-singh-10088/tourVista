@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const tourSchema = new mongoose.Schema({
   name: {
@@ -52,10 +52,11 @@ const tourSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
+    select: false,
   },
   startDates: {
     type: [Date],
-  }
+  },
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
