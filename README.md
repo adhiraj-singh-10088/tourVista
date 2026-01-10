@@ -39,7 +39,7 @@ https://github.com/user-attachments/assets/245e5f48-9fc6-416c-b1b4-1f7dbb53db2e
 ## 📁 Project Structure
 ```
 practiceProject/
-├── client/ # React frontend
+├── Client/ # React frontend
 ├── controllers/ # Backend controllers
 ├── routes/ # API routes
 ├── dev-data/ # Sample / seed data
@@ -60,7 +60,7 @@ cd practiceProject
 2. Start the backend server
 ```
 npm install
-npm run start:prod
+npm start
 ```
 
 Backend runs at:
@@ -69,7 +69,7 @@ http://localhost:3000
 
 3. Start the frontend
 ```
-cd client
+cd Client
 npm install
 npm run dev
 ```
