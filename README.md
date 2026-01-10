@@ -43,6 +43,9 @@ practiceProject/
 ├── controllers/ # Backend controllers
 ├── routes/ # API routes
 ├── dev-data/ # Sample / seed data
+├── models/ # Database models
+├── public/ # Static assets
+├── utils/ # Utility functions
 ├── app.js
 └── server.js
 ```
@@ -86,10 +89,10 @@ GET /api/v1/tours
 
 🤝 Credits
 
-Backend API and project base provided by
+Backend API and project base provided by:
 Adhiraj
 
-Frontend UI, React integration, and enhancements by
+Frontend UI, React integration, and enhancements by:
 Zahed
 
 📄 License
