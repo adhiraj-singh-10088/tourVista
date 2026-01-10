@@ -1,3 +1,4 @@
+import  { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import ThemeToggle from "./ThemeToggle";
 import useTheme from "../hooks/useTheme";
@@ -10,17 +11,21 @@ function Header() {
     <header className="header-container">
       <div className="header-content">
         <nav className="header-nav">
-          <a href="/">Home</a>
+          <NavLink to="/" className={({ isActive }) =>
+             isActive ? "nav-link active-link" : "nav-link"
+          }>
+            Home
+          </NavLink>
+
+
         </nav>
         <div className="header-logo-container">
           <img src={logo} alt="TourVista Logo" className="header-logo" />
         </div>
         <div className="header-actions">
-          <a href="/login">
-            <button className="header-signup-btn">
-                Sign Up
-            </button>
-          </a>
+        <Link to="/login" className="header-signup-btn">
+          Sign In / Up
+        </Link>
           <ThemeToggle isLightMode={isLightMode} setIsLightMode={setIsLightMode} />
         </div>
       </div>
