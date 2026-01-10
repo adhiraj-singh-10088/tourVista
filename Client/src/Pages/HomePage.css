@@ -1,0 +1,17 @@
+.dark-background {
+  background-color: black;
+  min-height: 100vh; /* Ensure the black background covers the whole viewport */
+  width: 100vw; /* Ensure the black background covers the whole width */
+  position: fixed; /* Position fixed to cover the entire viewport regardless of scrolling */
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+
+.dark-background .loading {
+  color: white; /* Make loading text visible on black background */
+  font-size: 2rem; /* Make the loading text more prominent */
+}
