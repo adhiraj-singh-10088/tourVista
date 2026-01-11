@@ -1,33 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useTours(perRow) {
+export default function useTours() {
   const [status, setStatus] = useState("loading");
   const [results, setResults] = useState(0);
   const [tours, setTours] = useState([]);
 
   useEffect(() => {
     let mounted = true;
-    if (!perRow) return;
 
     async function loadTours() {
       try {
-        setStatus("loading");
-
-        const res = await axios.get("/api/v1/tours", {
-          params: { perRow },
-        });
-
+        const res = await axios.get("/api/v1/tours");
         if (!mounted) return;
 
-        setStatus(res.data.status || "success");
-        setResults(
-          res.data.results ??
-            (res.data.data?.tours?.length ?? 0)
-        );
-        setTours(res.data.data?.tours || []);
+        setTours(res.data.data.tours || []);
+        setResults(res.data.results || 0);
+        setStatus("success");
       } catch (err) {
-        console.error("Failed to fetch tours:", err);
         if (!mounted) return;
         setStatus("error");
       }
@@ -38,7 +28,7 @@ export default function useTours(perRow) {
     return () => {
       mounted = false;
     };
-  }, [perRow]);
+  }, []); // 👈 fetch once, empty deps
 
   return { status, results, tours };
 }

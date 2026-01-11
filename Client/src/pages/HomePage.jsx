@@ -11,10 +11,14 @@ function HomePage() {
     if (width >= 600) return 2;
     return 1;
   });
-  const { status, results, tours } = useTours(perRow);
+
+  const { status, results, tours } = useTours(); // ✅ no perRow here
 
   return (
-    <div className={status === "loading" ? "dark-background" : ""} style={{ minHeight: "100vh", overflowY: "scroll" }}>
+    <div
+      className={status === "loading" ? "dark-background" : ""}
+      style={{ minHeight: "100vh", overflowY: "scroll" }}
+    >
       {status === "loading" ? (
         <p className="loading">Loading tours…</p>
       ) : (
@@ -22,8 +26,8 @@ function HomePage() {
           status={status}
           results={results}
           tours={tours}
-          onPerRowChange={setPerRow}
           perRow={perRow}
+          onPerRowChange={setPerRow} // optional for visual adjustment only
         />
       )}
     </div>

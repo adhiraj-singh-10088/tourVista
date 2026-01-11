@@ -14,14 +14,15 @@ function CardGrid({ status, results, tours, onPerRowChange, perRow }) {
   const [selectedTour, setSelectedTour] = useState(null);
   const lastReportedPerRow = useRef(perRow);
 
-useEffect(() => {
-  if (!gridRef.current || !onPerRowChange) return;
+  // Observe layout changes and report perRow for display purposes only
+  useEffect(() => {
+    if (!gridRef.current || !onPerRowChange) return;
 
-  const grid = gridRef.current;
-  let rafId = null;
+    const grid = gridRef.current;
+    let rafId = null;
     let timeoutId = null;
 
-  const updatePerRow = () => {
+    const updatePerRow = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         cancelAnimationFrame(rafId);
@@ -38,39 +39,41 @@ useEffect(() => {
             else break;
           }
 
+          // Only report if value changed
           if (count > 0 && count !== perRow && count !== lastReportedPerRow.current) {
             lastReportedPerRow.current = count;
-            onPerRowChange(count);
+            onPerRowChange(count); // ✅ display logic only
           }
         });
       }, 100);
-  };
+    };
 
-  // Initial measurement
-  updatePerRow();
+    // Initial measurement
+    updatePerRow();
 
-  const observer = new ResizeObserver(updatePerRow);
-  observer.observe(grid);
+    const observer = new ResizeObserver(updatePerRow);
+    observer.observe(grid);
 
-  return () => {
-    cancelAnimationFrame(rafId);
+    return () => {
+      cancelAnimationFrame(rafId);
       clearTimeout(timeoutId);
-    observer.disconnect();
-  };
-}, [onPerRowChange, perRow]);
-
-
+      observer.disconnect();
+    };
+  }, [onPerRowChange, perRow]);
 
   if (status === "error") {
     return <p className="error">Failed to load tours.</p>;
   }
+
+  // Only show perRow × 5 cards
+  const visibleTours = perRow ? tours.slice(0, perRow * 5) : tours;
 
   return (
     <div className="card-grid-wrapper">
       <p className="results">Total tours: {results}</p>
 
       <div ref={gridRef} className="card-grid">
-        {tours.map((tour) => (
+        {visibleTours.map((tour) => (
           <motion.div
             key={tour.id}
             variants={cardVariants}
