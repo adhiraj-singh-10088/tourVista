@@ -70,6 +70,8 @@ Backend runs at:
 
 http://localhost:3000
 
+Note: The database has IP whitelisting for now so you may use your own.
+
 3. Start the frontend
 ```
 cd Client
