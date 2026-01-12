@@ -67,6 +67,10 @@
   margin: 4rem 0 5rem;
 }
 
+.modal-name {
+  color: var(--text-primary);
+}
+
 .deck-image {
   position: absolute;
   max-width: 100%;
