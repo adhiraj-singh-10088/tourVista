@@ -78,7 +78,11 @@ tourSchema.pre('save', function (next) {
   next();
 });
 
-
+//post creation middleware
+tourSchema.post('save', function (doc, next) {
+  console.log(doc);
+  next();
+});
 
 const Tour = mongoose.model('Tour', tourSchema);
 
