@@ -168,6 +168,9 @@ exports.getMonthlyPlan = async (req, res) => {
       {
         $sort: { month: 1 },
       },
+      {
+        $limit: 12,
+      },
     ]);
 
     return res.status(200).json({
