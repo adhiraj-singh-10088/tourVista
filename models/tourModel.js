@@ -62,6 +62,10 @@ const tourSchema = new mongoose.Schema(
     startDates: {
       type: [Date],
     },
+    superDuperPooperSecretTour: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -72,7 +76,7 @@ tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
-//save works before .save() and .create(), not on insertMany()
+//save works before .save() and .create(), not on insertMany() or findByIdAndUpdate()
 tourSchema.pre('save', function (next) {
   this.slugName = slugify( this.name, { lower: true });
   next();
@@ -81,6 +85,17 @@ tourSchema.pre('save', function (next) {
 //post creation middleware
 tourSchema.post('save', function (doc, next) {
   console.log(doc);
+  next();
+});
+
+// find hook
+tourSchema.pre(/^find/, function () {
+  this.find({ superDuperPooperSecretTour: { $ne: true } });
+  this.start = Date.now();
+});
+
+tourSchema.post(/^find/, function (docs, next) {
+  console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
 });
 
