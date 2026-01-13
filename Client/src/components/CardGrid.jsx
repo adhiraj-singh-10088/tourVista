@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 import TouristCard from "./TouristCard";
 import TouristModal from "./TouristModal";
 import "./CardGrid.css";
+
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0 },
 };
+
 function CardGrid({ status, results, tours }) {
   const [selectedTour, setSelectedTour] = useState(null);
   if (status !== "success") {
