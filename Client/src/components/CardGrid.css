@@ -1,13 +1,3 @@
-/* body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: 'Montserrat', sans-serif; 
-  height: 100vh;
-  width: 100vw;
-} */
-
 .card-grid-wrapper {
   padding: 2rem;
   max-width: 100%;
@@ -28,11 +18,12 @@
 
 .results {
   margin-bottom: 2rem;
-  opacity: 0.8;
+  opacity: 1;
+  font-weight: bold;
 }
 
 .card-grid > div {
-  min-width: 220px; /* smaller than 380px */
+  min-width: 220px;
 }
 
 .card-grid {
@@ -45,11 +36,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
-  background-color: rgb(165, 5, 5);
-  height: 20vh;
-  width: 20vw;
-  font-size: 1.5dvw;
+  border-radius: 10px;
+  background-color: rgba(255, 82, 82, 0.15);
+  color: #ff5252;
+  border: 1px solid rgba(255, 82, 82, 0.3);
+  padding: 2rem;
+  margin: 2rem auto;
+  min-height: 150px;
+  width: 90%;
+  max-width: 600px;
+  font-size: 1.2rem;
   font-weight: bold;
+  text-align: center;
   cursor: default;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }

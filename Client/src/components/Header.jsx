@@ -16,6 +16,11 @@ function Header() {
           }>
             Home
           </NavLink>
+          <NavLink to="/tours" className={({ isActive }) =>
+             isActive ? "nav-link active-link" : "nav-link"
+          }>
+            Tours
+          </NavLink>
 
 
         </nav>
