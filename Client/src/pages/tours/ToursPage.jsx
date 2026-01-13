@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"; 
-import CardGrid from "../components/CardGrid"; 
-import useTours from "../hooks/useTours"; 
+import CardGrid from "./CardGrid"; 
+import useTours from "../../hooks/useTours"; 
 import './ToursPage.css' 
 
 function ToursPage() { 

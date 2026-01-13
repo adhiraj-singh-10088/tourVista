@@ -25,8 +25,7 @@ function CardGrid({ status, results, tours }) {
             key={tour.id}
             variants={cardVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0}}
+            animate="visible"
             transition={{ duration: 0.5 }}
           >
             {" "}

@@ -3,14 +3,20 @@
   color: var(--text-header);
   padding: 1rem 2rem;
   box-shadow: var(--shadow-md);
-  transition: background-color 0.3s ease, color 0.3s ease;
   height: 6vh;
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
+
 
 .header-content {
   display: flex;
@@ -131,4 +137,13 @@
   }
 }
 
+.header-show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+.header-hide {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}

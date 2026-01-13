@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 0rem;
   padding: 1rem;
 }
 
@@ -64,7 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4rem 0 5rem;
+  margin: 4rem  0 5rem;
 }
 
 .modal-name {
