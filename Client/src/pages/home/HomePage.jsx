@@ -1,6 +1,11 @@
+import TourVistaSVG from './TourVistaSVG.jsx';
+import './HomePage.css';
+
 function HomePage() {
     return (
-    <div></div>
+        <div className="hero-container">
+            <TourVistaSVG />
+        </div>
     );
 }
 
