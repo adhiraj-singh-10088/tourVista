@@ -2,6 +2,10 @@
   padding-top: 82px; /* Height of the header */
 }
 
+.content-container-home {
+  padding-top: 0;
+}
+
 @media (max-width: 768px) {
   .content-container {
     padding-top: 190px;

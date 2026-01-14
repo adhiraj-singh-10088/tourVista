@@ -17,6 +17,15 @@
     transform 0.3s ease;
 }
 
+.header-transparent {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.header-transparent .header-logo-container {
+  background-color: transparent;
+}
+
 
 .header-content {
   display: flex;

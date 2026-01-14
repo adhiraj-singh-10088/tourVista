@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useTheme(initial = false) {
+export default function useTheme() {
   const [isLightMode, setIsLightMode] = useState(() => {
     const storedTheme = localStorage.getItem("theme");
     return storedTheme === "light"; 

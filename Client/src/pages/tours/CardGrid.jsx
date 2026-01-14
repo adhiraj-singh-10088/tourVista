@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import TouristCard from "./TouristCard";
 import TouristModal from "./TouristModal";
 import "./CardGrid.css";
@@ -11,39 +11,39 @@ const cardVariants = {
 
 function CardGrid({ status, results, tours }) {
   const [selectedTour, setSelectedTour] = useState(null);
+
   if (status !== "success") {
     return <p className="error">Failed to load tours.</p>;
   }
+
   return (
     <div className="card-grid-wrapper">
-      {" "}
-      <p className="results">Total tours: {results}</p>{" "}
+      <p className="results">Total tours: {results}</p>
       <div className="card-grid">
-        {" "}
         {tours.map((tour) => (
-          <motion.div
+          <Motion.div
             key={tour.id}
             variants={cardVariants}
             initial="hidden"
             animate="visible"
             transition={{ duration: 0.5 }}
           >
-            {" "}
             <TouristCard
               tour={tour}
               isDimmed={selectedTour && selectedTour.id !== tour.id}
               onSelect={() => setSelectedTour(tour)}
-            />{" "}
-          </motion.div>
-        ))}{" "}
-      </div>{" "}
+            />
+          </Motion.div>
+        ))}
+      </div>
       {selectedTour && (
         <TouristModal
           tour={selectedTour}
           onClose={() => setSelectedTour(null)}
         />
-      )}{" "}
+      )}
     </div>
   );
 }
+
 export default CardGrid;
