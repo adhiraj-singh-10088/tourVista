@@ -1,0 +1,57 @@
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-scale {
+    position: relative;
+  width: 100%;
+  height: 100%;
+  animation: zoomOut 1s ease-out forwards;
+  will-change: transform;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Low quality blur */
+.image.low {
+  filter: blur(20px);
+  transform: scale(1.1);
+}
+
+/* High quality image */
+.image.high {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.image.high.loaded {
+  opacity: 1;
+}
+
+/* Zoom animation */
+@keyframes zoomOut {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .image-scale {
+    animation: none;
+    transform: scale(1);
+  }
+}

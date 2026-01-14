@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 import "./Header.css";
@@ -7,6 +7,9 @@ import useTheme from "../hooks/useTheme";
 import logo from "../assets/TourVistaLogo.png";
 
 function Header({ isHomePage }) {
+  const location = useLocation(); // <- get current route
+  const path = location.pathname;
+
   const [isLightMode, setIsLightMode] = useTheme();
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -33,6 +36,9 @@ function Header({ isHomePage }) {
     },
   );
 
+  // Only show ThemeToggle on /tours and /login
+  const showThemeToggle = path === "/tours" || path === "/login";
+
   return (
     <header className={headerClassName}>
       <div className="header-content">
@@ -54,17 +60,21 @@ function Header({ isHomePage }) {
             Tours
           </NavLink>
         </nav>
+
         <div className="header-logo-container">
           <img src={logo} alt="TourVista Logo" className="header-logo" />
         </div>
+
         <div className="header-actions">
           <Link to="/login" className="header-signup-btn">
             Sign In / Up
           </Link>
-          <ThemeToggle
-            isLightMode={isLightMode}
-            setIsLightMode={setIsLightMode}
-          />
+          {showThemeToggle && (
+            <ThemeToggle
+              isLightMode={isLightMode}
+              setIsLightMode={setIsLightMode}
+            />
+          )}
         </div>
       </div>
     </header>
@@ -72,4 +82,3 @@ function Header({ isHomePage }) {
 }
 
 export default Header;
-

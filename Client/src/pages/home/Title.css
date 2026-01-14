@@ -1,0 +1,38 @@
+.titleContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.title {
+    position: absolute;
+    color: var(--bg-header);
+    font-size: 8rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    text-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        0 16px 32px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    animation: title-animation 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    will-change: transform, opacity, filter;
+}
+
+@keyframes title-animation {
+  from {
+    transform: translateY(10vh) scale(0.9);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    transform: translateY(-15vh) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
