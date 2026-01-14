@@ -3,10 +3,7 @@ const tourController = require('./../controllers/tourController');
 
 const router = express.Router();
 
-router.param('id', (req, res, next, val) => {
-  console.log(`Requested id is: ${val}`);
-  next();
-});
+router.param('id', tourController.idLogger);
 
 router
   .route('/top-5-cheap')

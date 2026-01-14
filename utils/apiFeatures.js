@@ -1,7 +1,8 @@
 class APIFeatures {
-  constructor(query, queryString) {
+  constructor(query, queryString, collectionName) {
     this.query = query;
     this.queryString = queryString;
+    this.collectionName = collectionName;
   }
 
   filter() {
@@ -46,7 +47,7 @@ class APIFeatures {
     } else if (perRow > 0 && Number.isInteger(perRow)) {
       entriesToLoad = perRow * 5;
     } else {
-      entriesToLoad = 15;
+      entriesToLoad = this.collectionName.countDocuments();
     }
     const page = Number(this.queryString.page) || 1;
     const skip = (page - 1) * entriesToLoad;

@@ -36,6 +36,8 @@ const tourSchema = new mongoose.Schema(
     priceDiscount: {
       type: Number,
       validate: {
+        /* 'this' only points to the current document on NEW document creation (not on
+        Update) */
         validator: function (val) {return (this.price > val)},
         message: "Discounted price should be less than original price"
       }
