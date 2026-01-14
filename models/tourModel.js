@@ -78,7 +78,7 @@ tourSchema.virtual('durationWeeks').get(function () {
 
 //save works before .save() and .create(), not on insertMany() or findByIdAndUpdate()
 tourSchema.pre('save', function (next) {
-  this.slugName = slugify( this.name, { lower: true });
+  this.slugName = slugify(this.name, { lower: true });
   next();
 });
 
@@ -97,6 +97,13 @@ tourSchema.pre(/^find/, function () {
 tourSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
+});
+
+//aggregate hook
+tourSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({
+    $match: { superDuperPooperSecretTour: { $ne: true } },
+  });
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
