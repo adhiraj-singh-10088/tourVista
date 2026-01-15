@@ -25,9 +25,9 @@ const tourSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A tour must have a difficulty'],
       enum: {
-        values: ['easy','medium','difficult'],
-        message: 'Difficulty can only be: easy/medium/difficult'
-      }
+        values: ['easy', 'medium', 'difficult'],
+        message: 'Difficulty can only be: easy/medium/difficult',
+      },
     },
     price: {
       type: Number,
@@ -38,9 +38,11 @@ const tourSchema = new mongoose.Schema(
       validate: {
         /* 'this' only points to the current document on NEW document creation (not on
         Update) */
-        validator: function (val) {return (this.price > val)},
-        message: "Discounted price should be less than original price"
-      }
+        validator: function (val) {
+          return this.price > val;
+        },
+        message: 'Discounted price should be less than original price',
+      },
     },
     ratingsAverage: {
       type: Number,
@@ -91,15 +93,13 @@ tourSchema.virtual('durationWeeks').get(function () {
 });
 
 //save works before .save() and .create(), not on insertMany() or findByIdAndUpdate()
-tourSchema.pre('save', function (next) {
+tourSchema.pre('save', function () {
   this.slugName = slugify(this.name, { lower: true });
-  next();
 });
 
 //post creation middleware
-tourSchema.post('save', function (doc, next) {
+tourSchema.post('save', function (doc) {
   console.log(doc);
-  next();
 });
 
 // find hook
@@ -108,9 +108,8 @@ tourSchema.pre(/^find/, function () {
   this.start = Date.now();
 });
 
-tourSchema.post(/^find/, function (docs, next) {
+tourSchema.post(/^find/, function (docs) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
-  next();
 });
 
 //aggregate hook
