@@ -32,7 +32,7 @@
   gap: 3rem;
 }
 
-.error {
+/* .error {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,4 +50,4 @@
   text-align: center;
   cursor: default;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+} */

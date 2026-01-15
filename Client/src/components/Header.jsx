@@ -7,8 +7,8 @@ import useTheme from "../hooks/useTheme";
 import logo from "../assets/TourVistaLogo.png";
 
 function Header({ isHomePage }) {
-  const location = useLocation(); // <- get current route
-  const path = location.pathname;
+  const location = useLocation(); 
+  const path = location.pathname; 
 
   const [isLightMode, setIsLightMode] = useTheme();
   const [isVisible, setIsVisible] = useState(true);

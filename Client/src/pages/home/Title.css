@@ -11,7 +11,7 @@
 
 .title {
     position: absolute;
-    color: var(--bg-header);
+    color: rgb(205, 214, 244);
     font-size: 8rem;
     font-weight: 700;
     letter-spacing: -2px;
