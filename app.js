@@ -22,4 +22,11 @@ app.use('/api/v1', express.static(path.join(__dirname, 'public')));
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
+app.all('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'fail',
+    message: `Holy Skibidi Yappity ${req.originalUrl} does not exist gng 🥀🥀`,
+  });
+});
+
 module.exports = app;
