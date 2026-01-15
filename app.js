@@ -6,6 +6,8 @@ const path = require('path');
 const app = express();
 const userRouter = require('./routes/userRoutes');
 const tourRouter = require('./routes/tourRoutes');
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController')
 
 //MIDDLEWARE
 
@@ -23,10 +25,9 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
-  res.status(404).json({
-    status: 'fail',
-    message: `Holy Skibidi Yappity ${req.originalUrl} does not exist gng 🥀🥀`,
-  });
+  next(new AppError(`Oops! ${req.originalUrl} does not exist.`, 404));
 });
+
+app.use(globalErrorHandler.errorHandler);
 
 module.exports = app;
