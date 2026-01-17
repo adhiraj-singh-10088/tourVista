@@ -1,3 +1,27 @@
+/* Reset default Vite styles to allow full screen layout */
+html {
+  height: auto;
+  overflow: auto;
+}
+
+html body {
+  margin: 0;
+  padding: 0;
+  display: block;
+  place-items: unset;
+  min-width: 0;
+  height: auto;
+  overflow-x: hidden;
+}
+
+body #root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  height: auto;
+}
+
 .hero-container {
   position: relative;
   width: 100%;

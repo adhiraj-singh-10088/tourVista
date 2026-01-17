@@ -10,18 +10,14 @@ function App() {
   const isHomePage = location.pathname === "/";
 
   return (
-    <div
-      className={
-        isHomePage ? "content-container-home" : "content-container"
-      }
-    >
+    <>
       <Header isHomePage={isHomePage} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/tours" element={<ToursPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
