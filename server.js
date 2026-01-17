@@ -1,7 +1,25 @@
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 
+let server;
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+  console.log('UNCAUGHT EXCEPTION! Shutting down...');
+  if (server) {
+    server.close(() => {
+      process.exit(1);
+    });
+    // Fallback timeout to force exit if server.close hangs
+    setTimeout(() => {
+      process.exit(1);
+    }, 5000).unref();
+  } else {
+    process.exit(1);
+  }
+});
+
+const mongoose = require('mongoose');
 const app = require('./app');
 
 const DB = process.env.DATABASE.replace(
@@ -17,21 +35,13 @@ mongoose
   });
 
 const port = process.env.PORT;
-const server = app.listen(port, () => {
+server = app.listen(port, () => {
   console.log(`Server listening on port ${port}...`);
 });
 
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled Rejection:', err);
   console.log('UNHANDLED REJECTION! Shutting down...');
-  server.close(() => {
-    process.exit(1);
-  });
-});
-
-process.on('uncaughtException', (err) => {
-  console.error('Uncaught Exception:', err);
-  console.log('UNCAUGHT EXCEPTION! Shutting down...');
   server.close(() => {
     process.exit(1);
   });
