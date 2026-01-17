@@ -65,16 +65,19 @@ cd practiceProject
 ```
 
 2. Start the backend server
+
+(Make a config.env file in root and set PORT, DATABASE (link to connect to the database with '<PASSWORD>' in place of the actual password), and DATABASE_PASSWORD)
+
 ```
 npm install
-npm start
+npm run start:prod
 ```
 
 Backend runs at:
 
-http://localhost:3000
+http://localhost:PORT
 
-Note: The database has IP whitelisting for now so you may use your own.
+Note: The database does not have IP whitelisting anymore (still, use your own).
 
 3. Start the frontend
 ```
