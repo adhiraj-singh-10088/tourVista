@@ -39,6 +39,12 @@ const sendErrorProd = (err, res) => {
   }
 };
 
+const handleValidationErrorDB = (err) => {
+  const errors = Object.values(err.errors).map(el => el.message);
+  const message = `Invalid input data. ${errors.join('. ')}`;
+  return new AppError(message, 400);
+}
+
 exports.errorHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
@@ -54,6 +60,9 @@ exports.errorHandler = (err, req, res, next) => {
     }
     if (error.code === 11000) {
       error = handleDuplicateFieldsDB(error);
+    }
+    if (error.name === 'ValidationError') {
+      error = handleValidationErrorDB(error);
     }
     sendErrorProd(error, res);
   }
