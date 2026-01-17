@@ -1,29 +1,34 @@
-/* Reset default Vite styles to allow full screen layout */
-html {
-  height: auto;
-  overflow: auto;
-}
-
-html body {
+/* Disable body scrolling */
+html, body {
   margin: 0;
   padding: 0;
-  display: block;
-  place-items: unset;
-  min-width: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-body #root {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  height: auto;
-}
-
-.hero-container {
-  position: relative;
-  width: 100%;
+/* Root should not interfere */
+#root {
   height: 100vh;
-  overflow: hidden;;
+}
+
+/* Scroll snapping container */
+.scroll-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Each snap section */
+.page {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* Hero stays the same */
+.hero-container {
+  width: 100%;
+  overflow: hidden;
 }

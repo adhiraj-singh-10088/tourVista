@@ -15,6 +15,7 @@
     font-size: 8rem;
     font-weight: 700;
     letter-spacing: -2px;
+    cursor: default;
     text-shadow: 
         0 4px 8px rgba(0, 0, 0, 0.2),
         0 8px 16px rgba(0, 0, 0, 0.3),
