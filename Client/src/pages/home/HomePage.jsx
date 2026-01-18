@@ -16,6 +16,13 @@ function HomePage() {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { amount: 0.01 });
 
+  const bridgeRef = useRef(null);
+  const isBridgeInView = useInView(bridgeRef, { amount: 0.01 });
+
+  const infoRef = useRef(null);
+  const isInfoInView = useInView(infoRef, { amount: 0.01 });
+
+
   return (
     <div className="scroll-container">
 
@@ -36,13 +43,22 @@ function HomePage() {
       </section>
 
       {/* TRANSITION BRIDGE */}
-      <div className="section-bridge">
-        <img className="clouds-img" src={CloudsIMG} alt="CloudsIMG" />
+      <div className="section-bridge" ref={bridgeRef}>
+        {(isHeroInView || isBridgeInView) && (
+          <img
+            key={isHeroInView ? 'hero' : 'bridge'}
+            className="clouds-img"
+            src={CloudsIMG}
+            alt="CloudsIMG"
+          />
+        )}
       </div>
 
       {/* INFO SECTION */}
-      <section className="page info-section">
-        <img src={LeavesIMG} alt="LeavesIMG" className="leaves-img" />
+      <section className="page info-section" ref={infoRef}>
+        {isInfoInView && (
+          <img src={LeavesIMG} alt="LeavesIMG" className="leaves-img" />
+        )}
       </section>
     </div>
 
