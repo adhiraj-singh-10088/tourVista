@@ -13,7 +13,7 @@ function ResponsiveImage({
   return (
     <div className="image-wrapper" style={{ width: "100%", height: "100%" }}>
       <div className="image-scale" style={{ width: "100%", height: "100%", position: "relative" }}>
-        {/* Low quality image */}
+        {/* Low quality image for blur effect */}
         <img
           src={lowSrc}
           alt={alt}
@@ -22,7 +22,7 @@ function ResponsiveImage({
           style={{ objectFit: fit, width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
         />
 
-        {/* High quality image */}
+        {/* High quality image for blur effectt */}
         <img
           src={highSrc}
           alt={alt}
