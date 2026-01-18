@@ -34,33 +34,67 @@ html, body {
 
 .info-section {
   background-color: #0f1f16;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  top: -700px;
 }
 
 
 .section-bridge {
-  position: absolute; 
+  position: relative; 
   top: 0;
   left: 0;
   width: 100%;
-  height: 30vh;
-  z-index: 100;
+  height: 100vh;
+  z-index: 10;
 
   background: linear-gradient(
     to bottom,
     #060C1D 0%,
-    #0f1f16 60%,
+    transparent 60%,
     transparent 100%
   );
 
   pointer-events: none;
 }
 
+@keyframes zoomIn {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+}
+}
 
 .clouds-img {
   position: absolute;
-  top: -300px;
-  left: 0;
+  top: -400px;
   width: 100%;
-  z-index: 100;
+  height: 100%;
+  animation: zoomIn 0.6s ease-out;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.leaves-img {
+  position: absolute;
+  bottom: 300px;
+  width: 100%;
+  height: 100vh;
+  animation: zoomIn 0.6s ease-out;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.clouds-img img,
+.leaves-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

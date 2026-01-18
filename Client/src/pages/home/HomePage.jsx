@@ -35,21 +35,17 @@ function HomePage() {
         )}
       </section>
 
+      {/* TRANSITION BRIDGE */}
+      <div className="section-bridge">
+        <img className="clouds-img" src={CloudsIMG} alt="CloudsIMG" />
+      </div>
+
       {/* INFO SECTION */}
       <section className="page info-section">
-        <div className="section-bridge">
-          <img 
-            className="clouds-img"
-            src={CloudsIMG} 
-            alt="CloudsIMG" />
-        </div>
-
-        <img src={LeavesIMG} alt="LeavesIMG" />
-
-        <Info />
+        <img src={LeavesIMG} alt="LeavesIMG" className="leaves-img" />
       </section>
-
     </div>
+
   );
 }
 
