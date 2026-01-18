@@ -1,11 +1,10 @@
-/* Disable body scrolling */
 html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-/* Root should not interfere */
+
 #root {
   height: 100vh;
 }
@@ -20,15 +19,48 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Each snap section */
+
 .page {
   height: 100vh;
   scroll-snap-align: start;
   position: relative;
 }
 
-/* Hero stays the same */
 .hero-container {
   width: 100%;
   overflow: hidden;
+}
+
+
+.info-section {
+  background-color: #0f1f16;
+  overflow: hidden;
+}
+
+
+.section-bridge {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  z-index: 100;
+
+  background: linear-gradient(
+    to bottom,
+    #060C1D 0%,
+    #0f1f16 60%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+}
+
+
+.clouds-img {
+  position: absolute;
+  top: -300px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
