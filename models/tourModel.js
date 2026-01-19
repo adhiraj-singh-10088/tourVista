@@ -97,7 +97,7 @@ tourSchema.pre('save', function () {
   this.slugName = slugify(this.name, { lower: true });
 });
 
-//post creation middleware
+//post creation middleware (post save hook)
 tourSchema.post('save', function (doc) {
   console.log(doc);
 });
