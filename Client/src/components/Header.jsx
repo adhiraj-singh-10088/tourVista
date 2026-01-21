@@ -5,6 +5,7 @@ import "./Header.css";
 import ThemeToggle from "./ThemeToggle";
 import useTheme from "../hooks/useTheme";
 import logo from "../assets/TourVistaLogo.png";
+import SearchBar from "./SearchBar";
 
 function Header({ isHomePage }) {
   const location = useLocation(); 
@@ -59,9 +60,14 @@ function Header({ isHomePage }) {
           </NavLink>
         </nav>
 
-        <div className="header-logo-container">
-          <img src={logo} alt="TourVista Logo" className="header-logo" />
-        </div>
+        {/* Swap Logo with SearchBar on the Tours page */}
+        {path === "/tours" ? (
+          <SearchBar />
+        ) : (
+          <div className="header-logo-container">
+            <img src={logo} alt="TourVista Logo" className="header-logo" />
+          </div>
+        )}
 
         <div className="header-actions">
           <Link to="/login" className="header-signup-btn">
