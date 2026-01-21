@@ -27,14 +27,12 @@ function Header({ isHomePage }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const headerClassName = clsx(
-    "header-container",
-    {
-      "header-show": isVisible,
-      "header-hide": !isVisible,
-      "header-transparent": isHomePage,
-    },
-  );
+  const headerClassName = clsx("header-container", {
+    "header-show": isVisible,
+    "header-hide": !isVisible,
+    "header-transparent": isHomePage,
+    "header-home": isHomePage,
+  });
 
   // Only show ThemeToggle on /tours and /login
   const showThemeToggle = path === "/tours" || path === "/login";

@@ -47,6 +47,7 @@
 .header-logo {
   height: 6vh;
   width: auto;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
 
 .header-nav {
@@ -155,4 +156,28 @@
   opacity: 0;
   transform: translateY(-100%);
   pointer-events: none;
+}
+
+/* Home page specific styles */
+.header-home .nav-link {
+  color: white;
+}
+
+.header-home .active-link::after {
+  background-color: white;
+}
+
+.header-home .nav-link:hover {
+  color: #ddd;
+}
+
+.header-home .header-signup-btn {
+  background-color: rgb(49, 50, 68);
+  color: white;
+  border: 1px solid white;
+}
+
+.header-home .header-signup-btn:hover {
+  background-color: white;
+  color: var(--text-primary);
 }

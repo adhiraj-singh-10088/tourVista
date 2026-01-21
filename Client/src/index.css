@@ -6,15 +6,16 @@
   padding: 0;
 }
 
-/* FIX: These styles establish a stable, full-height layout foundation for the entire application. */
-/* WHY: The original layout was unpredictable, causing components to render partially off-screen. */
-/* By setting `height: 100%` on `html`, `body`, and the React app's `#root` div, we ensure the main container */
-/* always fills the full browser viewport. This gives all child components, like the pages, a reliable */
-/* and correctly-sized space to render in, fixing the alignment problems. */
-html,
+html {
+  height: 100%;
+  overflow-y: auto !important;
+}
+
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* ===== DEFAULT (DARK MODE) ===== */

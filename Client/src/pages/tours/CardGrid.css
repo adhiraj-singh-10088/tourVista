@@ -2,6 +2,7 @@
   padding: 2rem;
   max-width: 100%;
   margin: 0 auto;
+  margin-top: 2rem;
   animation: slideIn 0.2s ease-in-out;
 }
 
