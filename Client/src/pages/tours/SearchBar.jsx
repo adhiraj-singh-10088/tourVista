@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SearchIcon from './SearchIcon.jsx';
 import './SearchBar.css';
 
-function SearchBar() {
+function SearchBar({ searchQuery, setSearchQuery }) {
   const [isOpened, setIsOpened] = useState(false);
 
   return (
@@ -24,6 +24,8 @@ function SearchBar() {
               type="text"
               placeholder="Search Tours"
               autoFocus
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </motion.div>
         )}

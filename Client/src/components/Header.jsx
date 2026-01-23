@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 
@@ -13,6 +13,21 @@ import "./Header.css";
 function Header({ isHomePage }) {
   const location = useLocation(); 
   const path = location.pathname; 
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const filters = Object.fromEntries(searchParams);
+
+  const setSearchQuery = (query) => {
+    const newFilters = { ...filters };
+    
+    if (query) {
+      newFilters.search = query;
+    } else {
+      delete newFilters.search;
+    }
+    setSearchParams(newFilters);
+  };
 
   const [isLightMode, setIsLightMode] = useTheme();
   const [isVisible, setIsVisible] = useState(true);
@@ -64,8 +79,14 @@ function Header({ isHomePage }) {
 
         {path === "/tours" ? (
           <>
-            <DropDownMenu />
-            <SearchBar />
+            <DropDownMenu
+              filters={filters}
+              setFilters={setSearchParams}
+            />
+            <SearchBar
+              searchQuery={filters.search || ""}
+              setSearchQuery={setSearchQuery}
+            />
           </>
         ) : (
           <div className="header-logo-container">

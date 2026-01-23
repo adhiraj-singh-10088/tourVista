@@ -30,6 +30,12 @@ function DropDownMenu({ filters, setFilters }) {
           {menuView === 'main' && (
             <>
               <li>
+                <button onClick={() => setFilters({})}>
+                    Clear Filters
+                </button>
+              </li>
+
+              <li>
                 <button onClick={() => setMenuView('difficulty')}>
                   Difficulty
                 </button>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"; 
+import { useSearchParams } from "react-router-dom";
 import CardGrid from "./CardGrid"; 
 import useTours from "../../hooks/useTours"; 
 import './ToursPage.css' 
@@ -33,6 +34,36 @@ function ToursPage() {
 
   const { status, results, tours } = useTours(perRow); 
 
+  const [searchParams] = useSearchParams();
+
+  const filteredTours = (tours || []).filter((tour) => {
+    const search = searchParams.get("search");
+    if (search && !tour.name.toLowerCase().includes(search.toLowerCase())) {
+      return false;
+    }
+
+    const difficulty = searchParams.get("difficulty");
+    if (difficulty && tour.difficulty !== difficulty) {
+      return false;
+    }
+
+    const priceGte = searchParams.get("price[gte]");
+    if (priceGte && tour.price < Number(priceGte)) {
+      return false;
+    }
+
+    const ratingsGte = searchParams.get("ratingsAverage[gte]");
+    if (ratingsGte && tour.ratingsAverage < Number(ratingsGte)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  const sort = searchParams.get("sort");
+  if (sort === "price") filteredTours.sort((a, b) => a.price - b.price);
+  if (sort === "-price") filteredTours.sort((a, b) => b.price - a.price);
+
 return ( 
   <div className={status === "loading" ? "dark-background" : ""}>
      {status === "loading" ? (
@@ -40,8 +71,8 @@ return (
       ) : ( 
       <CardGrid
        status={status}
-        results={results}
-         tours={tours}
+        results={filteredTours.length}
+         tours={filteredTours}
          /> 
     )} 
     </div>
