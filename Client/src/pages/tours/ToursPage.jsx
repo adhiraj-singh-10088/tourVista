@@ -73,6 +73,7 @@ return (
        status={status}
         results={filteredTours.length}
          tours={filteredTours}
+         perRow={perRow}
          /> 
     )} 
     </div>

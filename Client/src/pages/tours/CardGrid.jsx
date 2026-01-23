@@ -9,7 +9,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-function CardGrid({ status, results, tours }) {
+function CardGrid({ status, results, tours, perRow }) {
   const [selectedTour, setSelectedTour] = useState(null);
 
   if (status !== "success") {
@@ -19,7 +19,10 @@ function CardGrid({ status, results, tours }) {
   return (
     <div className="card-grid-wrapper">
       <p className="results">Total tours: {results}</p>
-      <div className="card-grid">
+      <div
+        className="card-grid"
+        style={perRow ? { gridTemplateColumns: `repeat(${perRow}, 1fr)` } : {}}
+      >
         {tours.map((tour) => (
           <Motion.div
             key={tour.id}
