@@ -79,13 +79,13 @@ function Header({ isHomePage }) {
 
         {path === "/tours" ? (
           <>
+              <SearchBar
+                searchQuery={filters.search || ""}
+                setSearchQuery={setSearchQuery}
+              />
             <DropDownMenu
               filters={filters}
               setFilters={setSearchParams}
-            />
-            <SearchBar
-              searchQuery={filters.search || ""}
-              setSearchQuery={setSearchQuery}
             />
           </>
         ) : (
