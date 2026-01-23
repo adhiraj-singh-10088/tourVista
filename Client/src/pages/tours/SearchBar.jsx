@@ -32,7 +32,7 @@ function SearchBar() {
       <button
         type="button"
         className="search-button"
-        onClick={() => setIsOpened(prev => !prev)}
+        onClick={() => setIsOpened(true)}
       >
         <SearchIcon />
       </button>

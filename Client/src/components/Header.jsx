@@ -1,11 +1,14 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
-import "./Header.css";
+
 import ThemeToggle from "./ThemeToggle";
 import useTheme from "../hooks/useTheme";
+import DropDownMenu from "../pages/tours/DropDownMenu";
+import SearchBar from "../pages/tours/SearchBar";
+
 import logo from "../assets/TourVistaLogo.png";
-import SearchBar from "./SearchBar";
+import "./Header.css";
 
 function Header({ isHomePage }) {
   const location = useLocation(); 
@@ -35,7 +38,6 @@ function Header({ isHomePage }) {
     "header-home": isHomePage,
   });
 
-  // Only show ThemeToggle on /tours and /login
   const showThemeToggle = path === "/tours" || path === "/login";
 
   return (
@@ -60,9 +62,11 @@ function Header({ isHomePage }) {
           </NavLink>
         </nav>
 
-        {/* Swap Logo with SearchBar on the Tours page */}
         {path === "/tours" ? (
-          <SearchBar />
+          <>
+            <DropDownMenu />
+            <SearchBar />
+          </>
         ) : (
           <div className="header-logo-container">
             <img src={logo} alt="TourVista Logo" className="header-logo" />
