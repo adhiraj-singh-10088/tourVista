@@ -9,6 +9,19 @@
     min-height: 100vh;
 }
 
+@keyframes title-animation {
+  from {
+    transform: translateY(-12vh) scale(0.9);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    transform: translateY(-15vh) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 .title {
     position: absolute;
     color: rgb(205, 214, 244);
@@ -25,15 +38,31 @@
     will-change: transform, opacity, filter;
 }
 
-@keyframes title-animation {
+@keyframes subtitle-animation {
   from {
-    transform: translateY(-12vh) scale(0.9);
+    transform: translateY(-5vh) scale(0.9);
     opacity: 0;
     filter: blur(10px);
   }
   to {
-    transform: translateY(-15vh) scale(1);
+    transform: translateY(-7vh) scale(1);
     opacity: 1;
     filter: blur(0);
   }
+}
+
+.subtitle {
+    position: absolute;
+    color: rgb(205, 214, 244);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    cursor: default;
+    text-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        0 16px 32px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    animation: subtitle-animation 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    will-change: transform, opacity, filter;
 }
