@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import CardGrid from "./CardGrid"; 
-import useTours from "../../hooks/useTours"; 
-import './ToursPage.css' 
+import CardGrid from "./CardGrid";
+import useTours from "../../hooks/useTours";
+import './ToursPage.css'
 
-function ToursPage() { 
+function ToursPage() {
   const [perRow, setPerRow] = useState(1);
 
   useEffect(() => {
     let timeoutId;
     const calculatePerRow = () => {
-      const cardMinWidth = 400; 
+      const cardMinWidth = 400;
       const gap = 32;
       const horizontalPadding = 48;
       const availableWidth = document.documentElement.clientWidth - horizontalPadding;
@@ -32,9 +32,9 @@ function ToursPage() {
     };
   }, []);
 
-  const { status, results, tours } = useTours(perRow); 
-
   const [searchParams] = useSearchParams();
+
+  const { status, results, tours } = useTours(perRow, searchParams);
 
   const filteredTours = (tours || []).filter((tour) => {
     const search = searchParams.get("search");
@@ -42,42 +42,24 @@ function ToursPage() {
       return false;
     }
 
-    const difficulty = searchParams.get("difficulty");
-    if (difficulty && tour.difficulty !== difficulty) {
-      return false;
-    }
+    return true; // Keep the tour if it matches the name search
+  }); // <--- This closes the filter function properly!
 
-    const priceGte = searchParams.get("price[gte]");
-    if (priceGte && tour.price < Number(priceGte)) {
-      return false;
-    }
-
-    const ratingsGte = searchParams.get("ratingsAverage[gte]");
-    if (ratingsGte && tour.ratingsAverage < Number(ratingsGte)) {
-      return false;
-    }
-
-    return true;
-  });
-
-  const sort = searchParams.get("sort");
-  if (sort === "price") filteredTours.sort((a, b) => a.price - b.price);
-  if (sort === "-price") filteredTours.sort((a, b) => b.price - a.price);
-
-return ( 
-  <div className={status === "loading" ? "dark-background" : ""}>
-     {status === "loading" ? (
-       <p className="loading">Loading tours…</p> 
-      ) : ( 
-      <CardGrid
-       status={status}
-        results={filteredTours.length}
-         tours={filteredTours}
-         perRow={perRow}
-         /> 
-    )} 
+  // Now we return the HTML (JSX) for the page
+  return (
+    <div className={status === "loading" ? "dark-background" : ""}>
+      {status === "loading" ? (
+        <p className="loading">Loading tours…</p>
+      ) : (
+        <CardGrid
+          status={status}
+          results={filteredTours.length}
+          tours={filteredTours}
+          perRow={perRow}
+        />
+      )}
     </div>
-     ); 
-    } 
+  );
+}
 
- export default ToursPage;
+export default ToursPage;
