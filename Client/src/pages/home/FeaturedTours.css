@@ -1,0 +1,153 @@
+.featured-tours-container {
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f1f16;
+    color: #fff;
+    position: relative;
+    z-index: 0; 
+    padding: 2rem 0;
+}
+
+.section-title {
+    font-family: 'Roboto', serif; 
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+    letter-spacing: 2px;
+}
+
+.tours-wrapper {
+    display: flex;
+    width: 70vw; 
+    height: 60vh; 
+    gap: 1rem;
+}
+
+.tour-card {
+    position: relative;
+    flex: 1; 
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.4s ease-in-out;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.tour-card:hover {
+    flex: 8; 
+}
+
+.tour-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease;
+    opacity: 0.7;
+}
+
+.tour-card:hover .tour-bg {
+    transform: scale(1.1);
+    opacity: 0.4; 
+}
+
+.tour-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.tour-minimized h3 {
+    font-size: 1.2rem;
+    writing-mode: horizontal-rl; 
+    text-orientation: mixed;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+}
+
+.tour-card:hover .tour-minimized h3 {
+    opacity: 0;
+}
+.tour-expanded {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s; 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tour-card:hover .tour-expanded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tour-expanded h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.tour-expanded p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.tour-price {
+    font-size: 1.2rem;
+    color: #4ade80;    
+    font-weight: bold;
+}
+
+.book-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+    align-self: flex-start;
+}
+
+.book-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .tours-wrapper {
+        flex-direction: column;
+        width: 90vw;
+        height: 80vh;
+    }
+    
+    .tour-minimized h3 {
+        writing-mode: horizontal-tb;
+        transform: none;
+        left: 1rem;
+        bottom: 1rem;
+    }
+}

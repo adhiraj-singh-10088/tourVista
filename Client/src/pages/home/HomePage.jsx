@@ -3,7 +3,8 @@ import { useInView } from "framer-motion";
 import ResponsiveImage from "./ResponsiveImage.jsx";
 import Title from "./Title.jsx";
 import Mountain from "./Mountain.jsx";
-import Info from "./Info.jsx";
+import FeaturedTours from "./FeaturedTours.jsx";
+
 
 import TourVista3 from "../../assets/TourVista3.png";
 import TourVistaBG from "../../assets/TourVistaBG.png";
@@ -54,8 +55,8 @@ function HomePage() {
         )}
       </div>
 
-      {/* INFO SECTION */}
       <section className="page info-section" ref={infoRef}>
+        <FeaturedTours />
         {isInfoInView && (
           <img src={LeavesIMG} alt="LeavesIMG" className="leaves-img" />
         )}
