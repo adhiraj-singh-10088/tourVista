@@ -7,6 +7,7 @@
   align-items: center;
   margin-top: 0rem;
   padding: 1rem;
+  backdrop-filter: blur(4px);
 }
 
 .modal-content {

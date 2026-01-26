@@ -23,6 +23,9 @@ function HomePage() {
   const infoRef = useRef(null);
   const isInfoInView = useInView(infoRef, { amount: 0.01 });
 
+  const thirdSectionRef = useRef(null);
+  const isThirdSectionInView = useInView(thirdSectionRef, { amount: 0.01 });
+
 
   return (
     <div className="scroll-container">
@@ -66,7 +69,16 @@ function HomePage() {
           />
         )}
       </section>
+
+      <section className="page third-section" ref={thirdSectionRef}>
+        {isThirdSectionInView && (
+          <div></div>
+        )}
+      </section>
+
     </div>
+
+
 
   );
 }
