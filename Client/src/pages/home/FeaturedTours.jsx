@@ -17,7 +17,12 @@ const FeaturedTours = () => {
             <div className="tours-wrapper">
                 {tours.map((tour) => (
                     <div key={tour._id} className="tour-card">
-                        <img src={`/api/v1/img/tours/${tour.imageCover}`} alt={tour.name} className="tour-bg" />
+                        <img
+                            src={`/api/v1/img/tours/${tour.imageCover}`}
+                            alt={tour.name}
+                            className="tour-bg"
+                            loading="lazy"
+                        />
                         <div className="tour-content">
                             <div className="tour-minimized">
                                 <h3>{tour.difficulty}</h3>
@@ -28,7 +33,7 @@ const FeaturedTours = () => {
                                 <span className="tour-price">{`₹ ${tour.price}`}</span>
                                 <button className="book-btn"
                                     onClick={() => navigate("/tours")}
-                                >View Details</button>
+                                >View More</button>
                             </div>
                         </div>
                     </div>

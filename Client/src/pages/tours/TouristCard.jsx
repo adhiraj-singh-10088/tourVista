@@ -31,7 +31,7 @@ function TouristCard({ tour, onSelect, isFocused, isDimmed }) {
     >
       {/* IMAGE WRAPPER */}
       <div className="image-wrapper">
-        <img src={buildUrl(images[currentImage])} alt={tour.name} />
+        <img src={buildUrl(images[currentImage])} alt={tour.name} loading="lazy" />
 
         {isFocused && (
           <>

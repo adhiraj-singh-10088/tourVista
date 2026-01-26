@@ -121,9 +121,8 @@ function TouristModal({ tour, onClose }) {
               ((index - currentIndex + images.length) % images.length) || 0;
             const zIndex = images.length - offset;
 
-            let transform = `translateX(${offset * 10}px) translateY(${
-              offset * 5
-            }px) scale(${1 - offset * 0.05}) rotate(${offset * 2}deg)`;
+            let transform = `translateX(${offset * 10}px) translateY(${offset * 5
+              }px) scale(${1 - offset * 0.05}) rotate(${offset * 2}deg)`;
 
             if (isDragging && offset === 0) {
               transform = `translateX(${dragDeltaX}px) rotate(${dragDeltaX / 20}deg)`;
@@ -157,6 +156,7 @@ function TouristModal({ tour, onClose }) {
                 src={buildUrl(img)}
                 alt={`${tour.name} ${index + 1}`}
                 className="deck-image"
+                loading="lazy"
                 style={{
                   transform,
                   zIndex,

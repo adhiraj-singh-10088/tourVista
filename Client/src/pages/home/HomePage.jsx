@@ -58,7 +58,12 @@ function HomePage() {
       <section className="page info-section" ref={infoRef}>
         <FeaturedTours />
         {isInfoInView && (
-          <img src={LeavesIMG} alt="LeavesIMG" className="leaves-img" />
+          <img
+            src={LeavesIMG}
+            alt="LeavesIMG"
+            className="leaves-img"
+            loading="lazy"
+          />
         )}
       </section>
     </div>
