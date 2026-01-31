@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./InfoOverlay.css";
 
 function InfoOverlay() {
@@ -20,6 +21,11 @@ function InfoOverlay() {
                             <p>Handpicked tours designed by travel experts to give you unforgettable memories</p>
                         </div>
                     </div>
+                </div>
+                <div className="cta-container">
+                    <Link to="/tours" className="cta-button">
+                        Explore All Tours
+                    </Link>
                 </div>
             </div>
         </div>
