@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+
+.info-overlay {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.info-content {
+  max-width: 1200px;
+  padding: 2rem;
+  pointer-events: auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.info-title {
+  font-family: 'Rowdies', cursive;
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 9rem;
+  background-image: linear-gradient(45deg, #E3BFC3 0%, #F2E7D9 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInScale 0.8s ease-out;
+}
+
+.info-points {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-point {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out backwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-point:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.info-point:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.info-point:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.info-point:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.info-point:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.point-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  animation: fadeInScale 0.6s ease-out backwards;
+}
+
+.info-point:nth-child(1) .point-icon {
+  animation-delay: 0.3s;
+}
+
+.info-point:nth-child(2) .point-icon {
+  animation-delay: 0.5s;
+}
+
+.info-point:nth-child(3) .point-icon {
+  animation-delay: 0.7s;
+}
+
+.info-point:nth-child(4) .point-icon {
+  animation-delay: 0.9s;
+}
+
+.point-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.point-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .info-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .info-points {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .info-point {
+    padding: 1.25rem;
+  }
+
+  .point-icon {
+    font-size: 2rem;
+  }
+
+  .point-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .point-text p {
+    font-size: 0.9rem;
+  }
+}

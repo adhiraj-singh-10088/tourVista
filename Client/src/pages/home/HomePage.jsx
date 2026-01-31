@@ -4,11 +4,12 @@ import ResponsiveImage from "./ResponsiveImage.jsx";
 import Title from "./Title.jsx";
 import Mountain from "./Mountain.jsx";
 import FeaturedTours from "./FeaturedTours.jsx";
+import InfoOverlay from "./InfoOverlay.jsx";
 
 
 import TourVista3 from "../../assets/TourVista3.png";
 import TourVistaBG from "../../assets/TourVistaBG.png";
-import CloudsIMG from '../../assets/CloudsIMG.png';
+import DesertTourVista from '../../assets/DesertTourVista.png';
 import LeavesIMG from '../../assets/LeavesIMG.png';
 
 import "./HomePage.css";
@@ -16,9 +17,6 @@ import "./HomePage.css";
 function HomePage() {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { amount: 0.01 });
-
-  const bridgeRef = useRef(null);
-  const isBridgeInView = useInView(bridgeRef, { amount: 0.01 });
 
   const infoRef = useRef(null);
   const isInfoInView = useInView(infoRef, { amount: 0.01 });
@@ -46,33 +44,32 @@ function HomePage() {
         )}
       </section>
 
-      {/* TRANSITION BRIDGE */}
-      <div className="section-bridge" ref={bridgeRef}>
-        {(isHeroInView || isBridgeInView) && (
-          <img
-            key={isHeroInView ? 'hero' : 'bridge'}
-            className="clouds-img"
-            src={CloudsIMG}
-            alt="CloudsIMG"
-          />
-        )}
-      </div>
 
       <section className="page info-section" ref={infoRef}>
-        <FeaturedTours />
         {isInfoInView && (
-          <img
-            src={LeavesIMG}
-            alt="LeavesIMG"
-            className="leaves-img"
-            loading="lazy"
-          />
+          <>
+            <img
+              src={DesertTourVista}
+              alt="Desert Tour Vista"
+              className="desert-tour-img"
+              loading="lazy"
+            />
+            <InfoOverlay />
+          </>
         )}
       </section>
 
       <section className="page third-section" ref={thirdSectionRef}>
         {isThirdSectionInView && (
-          <div></div>
+          <>
+            <FeaturedTours />
+            <img
+              src={LeavesIMG}
+              alt="LeavesIMG"
+              className="leaves-img"
+              loading="lazy"
+            />
+          </>
         )}
       </section>
 
