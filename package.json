@@ -12,6 +12,8 @@
     "debug": "node --inspect-brk server.js"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "express": "^4.22.1",
     "mongodb": "^7.0.0",
