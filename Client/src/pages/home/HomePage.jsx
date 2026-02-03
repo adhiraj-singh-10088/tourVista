@@ -1,18 +1,18 @@
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "framer-motion";
-import ResponsiveImage from "./ResponsiveImage.jsx";
-import Title from "./Title.jsx";
-import Mountain from "./Mountain.jsx";
+import ResponsiveImage from "@components/common/ResponsiveImage.jsx";
+import Title from "@components/home/Title.jsx";
+import Mountain from "@components/home/Mountain.jsx";
 import FeaturedTours from "./FeaturedTours.jsx";
 import InfoOverlay from "./InfoOverlay.jsx";
-import ScrollIndicator from "./ScrollIndicator.jsx";
-import SideNavigation from "./SideNavigation.jsx";
+import ScrollIndicator from "@components/common/ScrollIndicator.jsx";
+import SideNavigation from "@components/common/SideNavigation.jsx";
 
 
-import TourVista3 from "../../assets/TourVista3.png";
-import TourVistaBG from "../../assets/TourVistaBG.png";
-import DesertTourVista from '../../assets/DesertTourVista.png';
-import LeavesIMG from '../../assets/LeavesIMG.png';
+import TourVista3 from "@assets/TourVista3.png";
+import TourVistaBG from "@assets/TourVistaBG.png";
+import DesertTourVista from '@assets/DesertTourVista.png';
+import LeavesIMG from '@assets/LeavesIMG.png';
 
 import "./HomePage.css";
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import CardGrid from "./CardGrid";
-import useTours from "../../hooks/useTours";
+import CardGrid from "@components/common/CardGrid";
+import useTours from "@hooks/useTours";
 import './ToursPage.css'
 
 function ToursPage() {

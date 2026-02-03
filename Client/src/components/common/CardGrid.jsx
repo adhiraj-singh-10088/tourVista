@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion as Motion } from "framer-motion";
-import TouristCard from "./TouristCard";
-import TouristModal from "./TouristModal";
+import TouristCard from "@components/features/TouristCard";
+import TouristModal from "@components/features/TouristModal";
 import "./CardGrid.css";
 
 const cardVariants = {

@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import ToursPage from "./pages/tours/ToursPage";
 import LoginPage from "./pages/login/LoginPage";
-import Header from "./components/Header";
+import Header from "@components/layout/Header";
 import "./App.css";
 
 function App() {

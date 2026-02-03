@@ -2,25 +2,25 @@ import { Link, NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 
-import ThemeToggle from "./ThemeToggle";
-import useTheme from "../hooks/useTheme";
-import DropDownMenu from "../pages/tours/DropDownMenu";
-import SearchBar from "../pages/tours/SearchBar";
+import ThemeToggle from "@components/common/ThemeToggle";
+import useTheme from "@hooks/useTheme";
+import DropDownMenu from "@components/features/DropDownMenu";
+import SearchBar from "@components/features/SearchBar";
 
-import logo from "../assets/TourVistaLogo.png";
+import logo from "@assets/TourVistaLogo.png";
 import "./Header.css";
 
 function Header({ isHomePage }) {
-  const location = useLocation(); 
-  const path = location.pathname; 
+  const location = useLocation();
+  const path = location.pathname;
 
   const [searchParams, setSearchParams] = useSearchParams();
-  
+
   const filters = Object.fromEntries(searchParams);
 
   const setSearchQuery = (query) => {
     const newFilters = { ...filters };
-    
+
     if (query) {
       newFilters.search = query;
     } else {
@@ -79,10 +79,10 @@ function Header({ isHomePage }) {
 
         {path === "/tours" ? (
           <>
-              <SearchBar
-                searchQuery={filters.search || ""}
-                setSearchQuery={setSearchQuery}
-              />
+            <SearchBar
+              searchQuery={filters.search || ""}
+              setSearchQuery={setSearchQuery}
+            />
             <DropDownMenu
               filters={filters}
               setFilters={setSearchParams}

@@ -1,16 +1,10 @@
 import { useState } from "react";
+import { buildUrl } from "@utils/imageUtils";
 import "./TouristCard.css";
 
 function TouristCard({ tour, onSelect, isFocused, isDimmed }) {
   const images = [tour.imageCover, ...tour.images];
   const [currentImage, setCurrentImage] = useState(0);
-  const buildUrl = (img) => {
-    if (!img) return "";
-    if (img.startsWith("http://") || img.startsWith("https://")) return img;
-    if (img.startsWith("/api/v1") || img.startsWith("api/v1/")) return `/${img.replace(/^\//, "")}`;
-    if (img.startsWith("/img") || img.startsWith("img/")) return `/api/v1/${img.replace(/^\//, "")}`;
-    return `/api/v1/img/tours/${img}`;
-  };
 
   const nextImage = (e) => {
     e.stopPropagation();
